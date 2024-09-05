@@ -1,0 +1,9 @@
+.train-class-card {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .train-class-card:hover {
+    background-color: #c8e6c9;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  }
+  
