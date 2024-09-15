@@ -1,0 +1,69 @@
+/* FlightFilters.css */
+
+/* Container for the entire filter section */
+.filter-section {
+    padding: 20px;
+    width: 250px; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Heading styles within the filter section */
+  .filter-item h4, .filter-item h5 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold; /* Added font weight for emphasis */
+  }
+  
+  /* Styles for each filter sub-item */
+  .filter-sub-item {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for filter labels */
+  .filter-sub-item label {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    font-size: 14px;
+  }
+  
+  /* Styles for checkboxes */
+  .filter-sub-item input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  /* Styles for range input (slider) */
+  .filter-sub-item input[type="range"] {
+    width: 100%; /* Full width of the filter sub-item */
+  }
+  
+  /* Container for time-based filters (departure times) */
+  .time-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  /* Styles for time filter buttons */
+  .time-filter button {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for time filter buttons */
+  .time-filter button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Styles for range labels (price range) */
+  .filter-sub-item span {
+    font-size: 12px;
+    color: #333; /* Darker color for better readability */
+  }
+  

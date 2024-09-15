@@ -781,7 +781,7 @@ export const hotelproducts =[
        image : [hotel5],
        places:"Beach",
        location:"Asia",
-       category :" mumbai",
+       category :"Mumbai",
        date :"1716634567 "
     },
     {
@@ -792,7 +792,7 @@ export const hotelproducts =[
      image : [hotel4],
      places:"City",
      location:"Asia",
-     category :" mumbai",
+     category :"Mumbai",
      date :"1716634567 "
     },
     {
@@ -803,7 +803,7 @@ export const hotelproducts =[
      image : [hotel3],
      places:"Countryside",
      location:"Asia",
-     category :" mumbai",
+     category :"Mumbai",
      date :"1716634567 "
     },
     {
@@ -814,7 +814,7 @@ export const hotelproducts =[
      image : [hotel2],
      places :"Beach",
      location:"USA",
-     category :" mumbai",
+     category :"Mumbai",
      date :"1716634567 "
     },
     {
@@ -825,7 +825,7 @@ export const hotelproducts =[
      image : [hotel1],
      places:"Countryside",
      location:"Asia",
-     category :" mumbai",
+     category :"Mumbai",
      date :"1716634567 "
     },
     {
@@ -873,7 +873,7 @@ export const hotelproducts =[
      image : [hotel9],
      places:"Countryside",
      location:"Europe",
-     category :" goa",
+     category :"Goa",
      date :"1716634567 "
     },
     {
@@ -884,7 +884,7 @@ export const hotelproducts =[
      image : [hotel18],
      places:"Beach",
      location:"Asia",
-     category :" goa",
+     category :"Goa",
      date :"1716634567 "
     },
     {
@@ -917,7 +917,7 @@ export const hotelproducts =[
     image : [hotel13],
     places:"City",
     location:"Asia",
-    category :" rajasthan",
+    category :"Rajasthan",
     date :"1716634567 "
    },
  {
@@ -950,7 +950,7 @@ export const hotelproducts =[
      image : [hotel16],
      places:"Countryside",
      location:"Asia",
-     category :" kerela",
+     category :"Kerela",
      date :"1716634567 "
  },
  {

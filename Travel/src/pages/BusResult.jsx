@@ -7,8 +7,21 @@ const BusResult = () => {
     const { state } = useLocation();
     const { formData } = state || {};
     const [buses, setBuses] = useState([]);
+    const [filteredBuses, setFilteredBuses] = useState([]);
+    const [filters, setFilters] = useState({
+        priceRange: [437, 3500],
+        busType: [],
+        departureTime: []
+    });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // Calculate arrival date based on departure time and travel hours
+    const calculateArrivalDate = (departureDate, hours) => {
+        const date = new Date(departureDate);
+        date.setHours(date.getHours() + hours);
+        return date.toISOString().split('T')[0];
+    };
 
     // Sample data to illustrate bus results based on the formData
     const sampleBuses = [
@@ -17,10 +30,10 @@ const BusResult = () => {
             name: 'IntrCity SmartBus',
             type: 'AC Sleeper (2 + 1)',
             price: 940,
-            departureDate: '04 Sep',
+            departureDate: formData?.travelDate || 'Unknown',
             departureTime: '23:00',
             departure: formData?.departure || 'Unknown',
-            arrivalDate: '05 Sep',
+            arrivalDate: calculateArrivalDate(formData?.travelDate || 'Unknown', 9),
             arrivalTime: '08:25',
             destination: formData?.destination || 'Unknown',
             rating: 4.6,
@@ -37,52 +50,12 @@ const BusResult = () => {
             name: 'GoBus Express',
             type: 'Non-AC Seater (2 + 2)',
             price: 720,
-            departureDate: '04 Sep',
+            departureDate: formData?.travelDate || 'Unknown',
             departureTime: '20:00',
             departure: formData?.departure || 'Unknown',
-            arrivalDate: '05 Sep',
+            arrivalDate: calculateArrivalDate(formData?.travelDate || 'Unknown', 11),
             arrivalTime: '07:15',
             destination: formData?.destination || 'Unknown',
-            rating: 4.2,
-            ratingCount: 14500,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-                'wifi_icon.png'
-            ],
-        },
-        // Additional sample buses...
-        {
-            id: 1,
-            name: 'IntrCity SmartBus',
-            type: 'AC Sleeper (2 + 1)',
-            price: 940,
-            departureDate: '04 Sep',
-            departureTime: '23:00',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '08:25',
-            destination: formData.destination,
-            rating: 4.6,
-            ratingCount: 32400,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-                'luggage_icon.png',
-                'wifi_icon.png'
-            ],
-        },
-        {
-            id: 2,
-            name: 'GoBus Express',
-            type: 'Non-AC Seater (2 + 2)',
-            price: 720,
-            departureDate: '04 Sep',
-            departureTime: '20:00',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '07:15',
-            destination: formData.destination,
             rating: 4.2,
             ratingCount: 14500,
             amenities: [
@@ -96,12 +69,12 @@ const BusResult = () => {
             name: 'VRL Travels',
             type: 'AC Seater (2 + 2)',
             price: 850,
-            departureDate: '04 Sep',
+            departureDate: formData?.travelDate || 'Unknown',
             departureTime: '22:00',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
+            departure: formData?.departure || 'Unknown',
+            arrivalDate: calculateArrivalDate(formData?.travelDate || 'Unknown', 9.5),
             arrivalTime: '07:30',
-            destination: formData.destination,
+            destination: formData?.destination || 'Unknown',
             rating: 4.4,
             ratingCount: 19200,
             amenities: [
@@ -115,12 +88,12 @@ const BusResult = () => {
             name: 'SRS Travels',
             type: 'Non-AC Sleeper (2 + 1)',
             price: 780,
-            departureDate: '04 Sep',
+            departureDate: formData?.travelDate || 'Unknown',
             departureTime: '21:30',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
+            departure: formData?.departure || 'Unknown',
+            arrivalDate: calculateArrivalDate(formData?.travelDate || 'Unknown', 9.5),
             arrivalTime: '07:00',
-            destination: formData.destination,
+            destination: formData?.destination || 'Unknown',
             rating: 4.0,
             ratingCount: 13400,
             amenities: [
@@ -134,12 +107,12 @@ const BusResult = () => {
             name: 'Orange Tours',
             type: 'AC Sleeper (2 + 1)',
             price: 1200,
-            departureDate: '04 Sep',
+            departureDate: formData?.travelDate || 'Unknown',
             departureTime: '22:30',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
+            departure: formData?.departure || 'Unknown',
+            arrivalDate: calculateArrivalDate(formData?.travelDate || 'Unknown', 9.5),
             arrivalTime: '08:45',
-            destination: formData.destination,
+            destination: formData?.destination || 'Unknown',
             rating: 4.8,
             ratingCount: 25600,
             amenities: [
@@ -149,106 +122,11 @@ const BusResult = () => {
                 'wifi_icon.png'
             ],
         },
-        {
-            id: 6,
-            name: 'KSRTC',
-            type: 'AC Volvo (2 + 2)',
-            price: 1050,
-            departureDate: '04 Sep',
-            departureTime: '22:45',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '08:30',
-            destination: formData.destination,
-            rating: 4.5,
-            ratingCount: 21000,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-                'wifi_icon.png'
-            ],
-        },
-        {
-            id: 7,
-            name: 'Parveen Travels',
-            type: 'Non-AC Sleeper (2 + 1)',
-            price: 750,
-            departureDate: '04 Sep',
-            departureTime: '21:00',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '07:45',
-            destination: formData.destination,
-            rating: 4.1,
-            ratingCount: 17800,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-            ],
-        },
-        {
-            id: 8,
-            name: 'GreenLine Travels',
-            type: 'AC Seater/Sleeper (2 + 1)',
-            price: 1100,
-            departureDate: '04 Sep',
-            departureTime: '22:15',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '08:15',
-            destination: formData.destination,
-            rating: 4.7,
-            ratingCount: 24500,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-                'luggage_icon.png',
-                'wifi_icon.png'
-            ],
-        },
-        {
-            id: 9,
-            name: 'Kaveri Travels',
-            type: 'Non-AC Seater (2 + 2)',
-            price: 680,
-            departureDate: '04 Sep',
-            departureTime: '19:45',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '06:30',
-            destination: formData.destination,
-            rating: 3.9,
-            ratingCount: 12000,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-            ],
-        },
-        {
-            id: 10,
-            name: 'Jabbar Travels',
-            type: 'AC Sleeper (2 + 1)',
-            price: 1150,
-            departureDate: '04 Sep',
-            departureTime: '23:15',
-            departure: formData.departure,
-            arrivalDate: '05 Sep',
-            arrivalTime: '09:00',
-            destination: formData.destination,
-            rating: 4.3,
-            ratingCount: 19800,
-            amenities: [
-                'bus_icon.png',
-                'ticket_icon.png',
-                'luggage_icon.png',
-                'wifi_icon.png'
-            ],
-        },
-
+        // Additional sample buses...
     ];
 
     useEffect(() => {
-        // Simulating data fetch
+        // Simulate data fetch
         setTimeout(() => {
             if (formData) {
                 // Simulate a data fetch or API call
@@ -261,6 +139,22 @@ const BusResult = () => {
         }, 1000);
     }, [formData]);
 
+    useEffect(() => {
+        const applyFilters = () => {
+            let filtered = buses.filter(bus => {
+                const [minPrice, maxPrice] = filters.priceRange;
+                const isWithinPriceRange = bus.price >= minPrice && bus.price <= maxPrice;
+                const isTypeMatched = filters.busType.length === 0 || filters.busType.includes(bus.type);
+                const isDepartureTimeMatched = filters.departureTime.length === 0 || filters.departureTime.includes(bus.departureTime);
+
+                return isWithinPriceRange && isTypeMatched && isDepartureTimeMatched;
+            });
+            setFilteredBuses(filtered.slice(0, 4)); // Limit to 4 results
+        };
+
+        applyFilters();
+    }, [filters, buses]);
+
     if (loading) return <div className="text-center text-gray-700">Loading...</div>;
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
@@ -268,14 +162,14 @@ const BusResult = () => {
         <div className="flex p-8">
             {/* Filter Section */}
             <div className="w-full lg:w-1/4 lg:pr-8 mb-6 lg:mb-0">
-                <BusFilter />
+                <BusFilter filters={filters} onChange={setFilters} />
             </div>
 
             {/* Bus Results Section */}
             <div className="w-full lg:w-3/4 overflow-y-auto max-h-screen">
                 <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Available Buses</h1>
-                {buses.length > 0 ? (
-                    buses.map((bus) => (
+                {filteredBuses.length > 0 ? (
+                    filteredBuses.map((bus) => (
                         <BusCard key={bus.id} bus={bus} />
                     ))
                 ) : (

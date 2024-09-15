@@ -1,0 +1,268 @@
+/* Container for the entire flight list */
+.flight-list-container {
+  display: flex;
+}
+
+/* Container for the flight filters */
+.flight-filters {
+  width: 250px; /* Adjust width as needed */
+  padding: 20px;
+  
+  
+}
+
+/* Flight list section */
+.flight-list {
+  flex: 1;
+  max-width: 800px; /* Reduced width for a smaller display area */
+  margin: auto;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Date navigation container */
+.date-navigation {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px 0; /* Optional: add some vertical padding for better appearance */
+}
+
+/* Date navigation buttons */
+.date-navigation button {
+  display: inline-block; /* Ensure buttons are in a single line */
+  flex: 0 0 auto; /* Prevent buttons from shrinking */
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.date-navigation button:hover {
+  background-color: #e0e0e0;
+}
+
+.date-navigation .selected {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Sorting options container */
+.sort-options {
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to wrap if necessary */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Sorting option buttons */
+.sort-options button {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 15px; /* Increased padding for better click area */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.sort-options button:hover {
+  background-color: #f0f0f0; /* Lighter background on hover */
+  color: #007bff; /* Change text color on hover */
+}
+
+.sort-options button.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Add focus styles for better accessibility */
+.sort-options button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Individual flight item styling */
+.flight-item {
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap */
+  gap: 10px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: white;
+  width: 100%;
+}
+
+/* Flight details */
+.flight-details {
+  flex: 2; /* Wider section for details */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  text-align: left;
+}
+
+.flight-details span {
+  text-decoration: none; /* Default no underline */
+}
+
+.flight-details span:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Airline info */
+.airline {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: -3%;
+}
+
+.airline img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.flight-number {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: -7%;
+  margin-top: auto;
+}
+
+/* Flight times */
+.times {
+  display: flex;
+  gap: 5px;
+  margin: 5px 0;
+  margin-bottom: 0%;
+}
+
+.departure, .arrival {
+  font-weight: bold;
+}
+
+.departure {
+  margin-left: 20%;
+}
+
+.arrival {
+  margin-left: 10%;
+}
+
+.duration {
+  color: gray;
+  font-size: 12px;
+  margin-left: 15%;
+}
+
+/* Stop type information */
+.stop-type {
+  font-size: 12px;
+  color: #555; /* Gray color for text */
+  margin-left: 48%;
+  margin-top: -2%;
+  margin-bottom: -6%;
+  display: block; /* Ensure it appears on its own line */
+}
+
+/* Price and discount labels */
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5%;
+  margin-left: auto;
+}
+
+.discount {
+  color: green;
+  font-size: 12px;
+  margin-top: -1%;
+  margin-left: auto;
+}
+
+.label {
+  background-color: #007bff;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* Action buttons (Book and Details) */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 15%;
+}
+
+.book-button, .details-button {
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.book-button {
+  background-color: orange;
+  color: white;
+  margin-bottom: -2px;
+}
+
+.book-button:hover {
+  background-color: darkorange;
+}
+
+.details-button {
+  all: unset; /* Removes all default styles */
+  cursor: pointer;
+  display: inline;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-top: 8%;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.details-button:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .flight-list {
+    max-width: 90%; /* Use percentage for flexibility on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .flight-list {
+    max-width: 100%; /* Full width on very small screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+}

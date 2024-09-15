@@ -8,15 +8,17 @@ import TrainForm from '../components/TrainForm'
 
 
 
+
+
+
+
+
 const Trains = () => {
   return (
     <div>
       <HotelsHero/>
       
       <TrainForm/>
-      
-      
-      
       <BestSeller/>
       <OurPolicy/>
     </div>

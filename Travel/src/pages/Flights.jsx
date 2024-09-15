@@ -1,14 +1,22 @@
 import React from 'react'
-import FlightBooking from '../components/FlightBooking'
+
 
 import HotelsHero from '../components/HotelsHero'
 import BestSeller from '../components/BestSeller'
+
+
+
+import FlightBookingForm from '../components/newflight/FlightForm'
+
 
 const Flights = () => {
   return (
     <div>
       <HotelsHero/>
-      <FlightBooking/>
+     
+      <FlightBookingForm/>
+      
+      
       <BestSeller/>
     </div>
   )

@@ -25,6 +25,10 @@ import HotelMenu from './components/HotelMenu';
 import BookingPage from './components/Bookingpage';
 import HotelBookTrack from './pages/HotelBookTrack';
 
+import FlightBooking from './components/newflight/FlightForm';
+import FlightList from './components/newflight/FlightList';
+
+
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
@@ -36,7 +40,10 @@ const App = () => {
         <Route path='/Trains' element={<Trains />} />
         <Route path="/TrainForm" element={<TrainForm />} />
         <Route path="/TrainResult" element={<TrainResults />} />
+        <Route path="/FlightBooking" element={<FlightBooking/>}/>
+        
         <Route path='/Flights' element={<Flights />} />
+        <Route path="/FlightList" element={<FlightList />} />
         <Route path="/confirmation" element={<FlightBookingConfirmation />} />
         <Route path='/Vacation' element={<Vacation />} />
         <Route path='/Offers' element={<Offers />} />
