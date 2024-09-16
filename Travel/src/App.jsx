@@ -24,7 +24,7 @@ import Hotels from './pages/Hotels';
 import HotelMenu from './components/HotelMenu';
 import BookingPage from './components/Bookingpage';
 import HotelBookTrack from './pages/HotelBookTrack';
-
+import HotelPage from './components/NewHotels/HotelPage';
 import FlightBooking from './components/newflight/FlightForm';
 import FlightList from './components/newflight/FlightList';
 
@@ -48,6 +48,7 @@ const App = () => {
         <Route path='/Vacation' element={<Vacation />} />
         <Route path='/Offers' element={<Offers />} />
         <Route path='/hotels' element={<Hotels />} />
+        <Route path="/hotel/:id" element={<HotelPage />} />
         <Route path="/HotelMenu" element={<HotelMenu />} />
         <Route path="/booking/:id" element={<BookingPage />} />
         <Route path='/product/:productId' element={<Product />} />

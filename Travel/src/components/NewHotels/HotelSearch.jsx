@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../NewHotels/HotelSearch.css";
 
 const HotelSearch = () => {
@@ -23,18 +24,107 @@ const HotelSearch = () => {
   const [paymentMode, setPaymentMode] = useState([]);
   const [meals, setMeals] = useState([]);
 
+  // List of predefined destinations
+  const destinations = [
+    "Goa",
+    "Pune",
+    "Mumbai",
+    "Bengaluru",
+    "Delhi",
+    "Chennai",
+    "Hyderabad",
+    "Alibaug",
+  ];
+
+  // State to manage suggestions
+  const [filteredDestinations, setFilteredDestinations] = useState([]);
+
+  // Sample property data with unique IDs
   const properties = [
     {
-      name: "The Flora Grand",
-      location: "New Vaddem, Goa",
-      distance: "110.0 km from City Center",
-      rating: 8.0,
-      reviews: 756,
-      price: 2922,
-      originalPrice: 3997,
-      discount: 174,
-      image: "https://example.com/flora_grand_image.jpg",
-      features: ["Free Wifi", "Swimming pool", "Free Cancellation", "Room Service"],
+      id: 1,
+      name: "Urban Oasis",
+      location: "Pune, Maharashtra",
+      distance: "12.0 km from City Center",
+      rating: 8.5,
+      reviews: 663,
+      price: 3800,
+      originalPrice: 4500,
+      discount: 700,
+      image: "https://th.bing.com/th/id/OIP.DDYGhFqUNR5rc1TtT2Vh-wHaE8?rs=1&pid=ImgDetMain",
+      features: ["Swimming Pool", "Gym", "Free Wifi", "Bar"],
+      breakfastIncluded: true,
+      starRating: 4,
+      facilities: {
+        internetAccess: true,
+        parking: true,
+        roomService: true,
+        cctv: true,
+      },
+      accommodationType: "Hotel",
+      paymentMode: "Prepaid",
+      meals: ["Breakfast Included"],
+    },
+    {
+      id: 2,
+      name: "Eco Stay Lodge",
+      location: "Alibaug, Maharashtra",
+      distance: "75.0 km from City Center",
+      rating: 7.8,
+      reviews: 214,
+      price: 2700,
+      originalPrice: 3200,
+      discount: 500,
+      image: "https://i.pinimg.com/originals/20/07/d6/2007d6dd4ca8f4b527d19c7baaefab7e.jpg",
+      features: ["Eco-Friendly", "Organic Meals", "Free Cancellation"],
+      breakfastIncluded: true,
+      starRating: 3,
+      facilities: {
+        internetAccess: true,
+        parking: false,
+        roomService: false,
+        cctv: false,
+      },
+      accommodationType: "Bed and Breakfast",
+      paymentMode: "Pay at Hotel",
+      meals: ["Breakfast Included"],
+    },
+    {
+      id: 3,
+      name: "Luxury Haven",
+      location: "Bengaluru, Karnataka",
+      distance: "30.0 km from City Center",
+      rating: 9.0,
+      reviews: 872,
+      price: 6000,
+      originalPrice: 7500,
+      discount: 1500,
+      image: "https://cache.marriott.com/content/dam/marriott-renditions/MLAWI/mlawi-pool-7040-hor-wide.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=750px:*",
+      features: ["Luxury Spa", "Gourmet Dining", "Free Breakfast"],
+      breakfastIncluded: true,
+      starRating: 5,
+      facilities: {
+        internetAccess: true,
+        parking: true,
+        roomService: true,
+        cctv: true,
+      },
+      accommodationType: "Resort",
+      paymentMode: "Prepaid",
+      meals: ["Breakfast Included", "Dinner Included"],
+    },
+    {
+      id: 4,
+      name: "City Lights Hotel",
+      location: "Mumbai, Maharashtra",
+      distance: "5.0 km from City Center",
+      rating: 8.7,
+      reviews: 432,
+      price: 3500,
+      originalPrice: 4000,
+      discount: 500,
+      image: "https://images.unsplash.com/photo-1543515317-f419f4c01cf7",
+      features: ["City View", "Gym", "Free Wifi", "Restaurant"],
       breakfastIncluded: false,
       starRating: 4,
       facilities: {
@@ -43,28 +133,95 @@ const HotelSearch = () => {
         roomService: true,
         cctv: true,
       },
-    },
-    // Additional properties
+      accommodationType: "Hotel",
+      paymentMode: "Prepaid",
+      meals: ["Lunch Included"],
+    }
   ];
 
-  const filteredProperties = properties.filter((property) => {
-    // Apply the filtering logic
-    // ...
-    return true;
-  });
+  // Filter properties based on the current search state
+  const applyFilters = (property) => {
+    const isMatchingDestination = !destination || property.location.toLowerCase().includes(destination.toLowerCase());
+    const isWithinPriceRange = property.price >= priceRange[0] && property.price <= priceRange[1];
+    const isMatchingStarRating = starRating.length === 0 || starRating.includes(property.starRating);
+    const hasRequiredFacilities = Object.entries(facilities).every(([key, value]) => !value || property.facilities[key]);
+    const matchesBreakfast = !freeBreakfast || property.breakfastIncluded;
+    const matchesCancellation = !freeCancellation || property.features.includes("Free Cancellation");
+    const matchesParking = !parkingAvailable || property.facilities.parking;
+
+    // Check accommodation type
+    const isMatchingAccommodationType = accommodationType.length === 0 || accommodationType.includes(property.accommodationType);
+
+    // Check payment mode
+    const isMatchingPaymentMode = paymentMode.length === 0 || paymentMode.includes(property.paymentMode);
+
+    // Check meals
+    const isMatchingMeals = meals.length === 0 || meals.every(meal => property.meals.includes(meal));
+
+    return (
+      isMatchingDestination &&
+      isWithinPriceRange &&
+      isMatchingStarRating &&
+      hasRequiredFacilities &&
+      matchesBreakfast &&
+      matchesCancellation &&
+      matchesParking &&
+      isMatchingAccommodationType &&
+      isMatchingPaymentMode &&
+      isMatchingMeals
+    );
+  };
+
+  const handleSearch = () => {
+    const results = properties.filter(applyFilters);
+    setFilteredProperties(results);
+  };
+
+  const handleDestinationChange = (e) => {
+    const value = e.target.value;
+    setDestination(value);
+    if (value.length > 0) {
+      setFilteredDestinations(destinations.filter(dest => dest.toLowerCase().includes(value.toLowerCase())));
+    } else {
+      setFilteredDestinations([]);
+    }
+  };
+
+  const handleDestinationSelect = (dest) => {
+    setDestination(dest);
+    setFilteredDestinations([]);
+  };
+
+  const [filteredProperties, setFilteredProperties] = useState(properties);
+  const navigate = useNavigate();
+
+  const handlePropertyClick = (id) => {
+    navigate(`/hotel/${id}`);
+  };
 
   return (
     <div className="app-container">
       {/* Search Form */}
       <div className="search-form">
-        <h1>Find Your Stay in Goa</h1>
+        <h1>Find Your Stay</h1>
         <div className="search-fields">
-          <input
-            type="text"
-            placeholder="Destination"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-          />
+          <div className="autocomplete">
+            <input
+              type="text"
+              placeholder="Destination"
+              value={destination}
+              onChange={handleDestinationChange}
+            />
+            {filteredDestinations.length > 0 && (
+              <ul className="suggestions">
+                {filteredDestinations.map((dest) => (
+                  <li key={dest} onClick={() => handleDestinationSelect(dest)}>
+                    {dest}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <input
             type="date"
             placeholder="Check-in"
@@ -77,7 +234,7 @@ const HotelSearch = () => {
             value={checkOutDate}
             onChange={(e) => setCheckOutDate(e.target.value)}
           />
-          <button>Search</button>
+          <button onClick={handleSearch}>Search</button>
         </div>
       </div>
 
@@ -85,7 +242,7 @@ const HotelSearch = () => {
         {/* Sidebar Filters */}
         <div className="sidebar">
           <h2>Filters</h2>
-          
+
           {/* Free Cancellation */}
           <label>
             <input
@@ -162,6 +319,8 @@ const HotelSearch = () => {
               {star} Star
             </label>
           ))}
+
+          {/* Accommodation Type */}
           <h3>Accommodation Type</h3>
           {["Hotel", "Resort", "Bed and Breakfast"].map((type) => (
             <label key={type}>
@@ -180,6 +339,7 @@ const HotelSearch = () => {
             </label>
           ))}
 
+          {/* Payment Mode */}
           <h3>Payment Mode</h3>
           {["Prepaid", "Pay at Hotel"].map((mode) => (
             <label key={mode}>
@@ -198,6 +358,7 @@ const HotelSearch = () => {
             </label>
           ))}
 
+          {/* Meals */}
           <h3>Meals</h3>
           {["Breakfast Included", "Dinner Included"].map((meal) => (
             <label key={meal}>
@@ -220,7 +381,11 @@ const HotelSearch = () => {
         {/* Property Cards */}
         <div className="property-list">
           {filteredProperties.map((property) => (
-            <div className="property-card" key={property.name}>
+            <div
+              className="property-card"
+              key={property.id}
+              onClick={() => handlePropertyClick(property.id)}
+            >
               <div className="property-image">
                 {/* Trending Label */}
                 <span className="trending-label">Trending</span>
@@ -243,7 +408,7 @@ const HotelSearch = () => {
                 {/* Room Availability */}
                 <p className="room-availability">Last 2 rooms left</p>
                 
-                <button className="book-btn">Book Now</button>
+                <button className="book-btn" onClick={() => handlePropertyClick(property.id)}>Book Now</button>
               </div>
             </div>
           ))}

@@ -2,35 +2,36 @@
 .main-container {
     display: flex;
     width: 100%;
-  }
-  
-  /* Sidebar styles */
-  .sidebar {
+}
+
+/* Sidebar styles */
+.sidebar {
     width: 25%;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
     overflow-y: auto; /* Enable vertical scroll */
     height: 100%; /* Full height for scrolling */
-  }
-  
-  .sidebar h2, .sidebar h3 {
+}
+
+.sidebar h2, .sidebar h3 {
     font-size: 22px;
     margin-bottom: 10px;
-  }
-  
-  .sidebar label {
+}
+
+.sidebar label {
     display: block;
-    margin-bottom: 10px;}
+    margin-bottom: 10px;
+}
 
-    .content-wrapper {
-        display: flex;
-        height: 80vh; /* Adjust height for scrolling */
-      }
+.content-wrapper {
+    display: flex;
+    height: 80vh; /* Adjust height for scrolling */
     
+}
 
-  /* Property card container */
-  .property-card {
+/* Property card container */
+.property-card {
     flex: 1; /* Takes up the remaining space (75%) */
     display: flex;
     border: 1px solid #ccc;
@@ -40,27 +41,25 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     background-color: white;
-  }
-  
-  .property-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  /* Image section of the card */
-  .property-image {
+    max-height: 400px; /* Adjust based on your design needs */
+    position: relative; /* Ensure this is relative for positioning children */
+}
+
+/* Image section of the card */
+.property-image {
     width: 30%;
     position: relative;
-  }
-  
-  .property-image img {
+}
+
+.property-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px 0 0 10px;
-  }
-  
-  /* Trending label at the top-left corner of the image */
-  .trending-label {
+}
+
+/* Trending label at the top-left corner of the image */
+.trending-label {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -70,64 +69,82 @@
     border-radius: 4px;
     font-size: 12px;
     font-weight: bold;
-  }
-  
-  /* Details section of the card */
-  .property-details {
+}
+
+/* Details section of the card */
+.property-details {
     width: 70%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  
-  /* Title and other information in the details section */
-  .property-details h3 {
+     /* Make this container the reference for absolute positioning */
+    overflow-y: auto; /* Enable vertical scrolling */
+    box-sizing: border-box;
+}
+
+/* Title and other information in the details section */
+.property-details h3 {
     font-size: 20px;
     margin-top: 0;
     color: #333;
-  }
-  
-  .property-details p {
+}
+
+.property-details p {
     font-size: 14px;
     margin: 5px 0;
     color: #555;
-  }
-  
-  /* Property price and discount information */
-  .property-price {
+}
+
+/* Property price and discount information */
+.property-price {
     font-size: 16px;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .current-price {
+}
+
+.current-price {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     color: #ff6600;
-  }
-  
-  .original-price {
+    position: absolute; /* Positioning relative to .property-details */
+    top: 32%; /* Distance from the top */
+    right: 5%; /* Distance from the right */
+}
+
+.original-price {
     text-decoration: line-through;
     color: #999;
     font-size: 14px;
-  }
-  
-  .discount {
+    position: absolute; /* Positioning relative to .property-details */
+    top: 23%; /* Distance from the top */
+    right: 5%; /* Distance from the right */
+}
+
+.discount {
     color: #27ae60;
-    font-size: 12px;
-  }
-  
-  /* Availability message (if any) */
-  .room-availability {
+    font-size: 14px;
+    position: absolute;
+    top: 47%;
+    right: 5%;
+}
+
+/* Availability message (if any) */
+.room-availability {
+    position: absolute; /* Positioning relative to .property-details */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
     color: red;
     font-weight: bold;
-  }
-  
-  /* "Book Now" button */
-  .book-btn {
+    background-color: #fff; /* Optional: Background color to make the text stand out */
+    padding: 5px 10px; /* Optional: Padding for better readability */
+    border-radius: 4px; /* Optional: Rounded corners */
+}
+
+/* "Book Now" button */
+.book-btn {
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
@@ -135,64 +152,66 @@
     border-radius: 4px;
     cursor: pointer;
     align-self: flex-end;
-  }
-  
-  .book-btn:hover {
+    position: absolute;
+    top: 55%;
+    
+}
+
+.book-btn:hover {
     background-color: #2980b9;
-  }
-  
-  /* Search form styles */
-  .search-form {
+}
+
+/* Search form styles */
+.search-form {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search-form h1 {
+}
+
+.search-form h1 {
     font-size: 24px;
     margin-bottom: 10px;
-  }
-  
-  .search-fields {
+}
+
+.search-fields {
     display: flex;
     gap: 10px;
     margin-top: 10px;
-  }
-  
-  .search-fields input {
+}
+
+.search-fields input {
     flex: 1;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  .search-fields button {
+}
+
+.search-fields button {
     padding: 10px 20px;
     background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .search-fields button:hover {
+}
+
+.search-fields button:hover {
     background-color: #2980b9;
-  }
-  
-  /* Layout adjustments */
-  .app-container {
+}
+
+/* Layout adjustments */
+.app-container {
     padding: 20px;
-  }
-  
-  .content-wrapper {
+}
+
+.content-wrapper {
     display: flex;
     flex-wrap: wrap;
-  }
-  
-  .property-list {
+}
+
+.property-list {
     flex: 1;
-  }
-  
+}

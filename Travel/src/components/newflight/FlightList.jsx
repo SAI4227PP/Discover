@@ -298,7 +298,7 @@ const FlightList = () => {
                 </div>
                 <span className="stop-type">{flight.stopType}</span>
                 <span className="price">{flight.price}</span>
-                <span className="discount">{flight.discount}</span>
+                
               </div>
               <div className="actions">
                 <button className="book-button">Book</button>

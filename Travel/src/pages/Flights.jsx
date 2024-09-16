@@ -16,7 +16,7 @@ const Flights = () => {
       <HotelsHero/>
      
       <FlightBookingForm/>
-      <HotelSearch/>
+      
       
       
       <BestSeller/>
