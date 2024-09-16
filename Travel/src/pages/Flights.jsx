@@ -7,6 +7,7 @@ import BestSeller from '../components/BestSeller'
 
 
 import FlightBookingForm from '../components/newflight/FlightForm'
+import HotelSearch from '../components/NewHotels/HotelSearch'
 
 
 const Flights = () => {
@@ -15,6 +16,7 @@ const Flights = () => {
       <HotelsHero/>
      
       <FlightBookingForm/>
+      <HotelSearch/>
       
       
       <BestSeller/>
