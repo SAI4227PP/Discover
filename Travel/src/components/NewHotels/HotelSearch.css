@@ -1,0 +1,198 @@
+/* Container for the main content and sidebar */
+.main-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    overflow-y: auto; /* Enable vertical scroll */
+    height: 100%; /* Full height for scrolling */
+  }
+  
+  .sidebar h2, .sidebar h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar label {
+    display: block;
+    margin-bottom: 10px;}
+
+    .content-wrapper {
+        display: flex;
+        height: 80vh; /* Adjust height for scrolling */
+      }
+    
+
+  /* Property card container */
+  .property-card {
+    flex: 1; /* Takes up the remaining space (75%) */
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: white;
+  }
+  
+  .property-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  /* Image section of the card */
+  .property-image {
+    width: 30%;
+    position: relative;
+  }
+  
+  .property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  /* Trending label at the top-left corner of the image */
+  .trending-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff6600;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  /* Details section of the card */
+  .property-details {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Title and other information in the details section */
+  .property-details h3 {
+    font-size: 20px;
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .property-details p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* Property price and discount information */
+  .property-price {
+    font-size: 16px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .current-price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff6600;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .discount {
+    color: #27ae60;
+    font-size: 12px;
+  }
+  
+  /* Availability message (if any) */
+  .room-availability {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* "Book Now" button */
+  .book-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  .book-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Search form styles */
+  .search-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .search-fields {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .search-fields input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-fields button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-fields button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Layout adjustments */
+  .app-container {
+    padding: 20px;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .property-list {
+    flex: 1;
+  }
+  
