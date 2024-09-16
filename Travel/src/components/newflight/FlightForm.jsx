@@ -99,27 +99,30 @@ const FlightBooking = () => {
         </form>
       </div>
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
         .container {
           display: flex;
           justify-content: center;
           align-items: center;
           min-height: 100vh;
-          background-color: #f0f2f5;
+          background-color: #f5f6f7;
           padding: 0 20px;
+          font-family: 'Roboto', sans-serif;
         }
         .form-container {
           background-color: #ffffff;
           padding: 30px;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
           width: 100%;
           max-width: 500px;
         }
         .heading {
-          margin-bottom: 20px;
-          font-size: 28px;
-          font-weight: bold;
-          color: #333;
+          margin-bottom: 24px;
+          font-size: 32px;
+          font-weight: 700;
+          color: #2c3e50;
           text-align: center;
         }
         .form {
@@ -127,40 +130,41 @@ const FlightBooking = () => {
           flex-direction: column;
         }
         .form-group {
-          margin-bottom: 20px;
+          margin-bottom: 24px;
         }
         .label {
           display: block;
           margin-bottom: 8px;
           font-size: 16px;
           font-weight: 500;
-          color: #333;
+          color: #34495e;
         }
         .select,
         .input {
           width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+          padding: 12px;
+          border: 1px solid #bdc3c7;
+          border-radius: 6px;
           font-size: 16px;
+          color: #2c3e50;
         }
         .button {
-          background-color: #007bff;
+          background-color: #3498db;
           color: #ffffff;
           border: none;
-          padding: 12px;
-          border-radius: 4px;
+          padding: 14px;
+          border-radius: 6px;
           cursor: pointer;
           font-size: 16px;
           font-weight: 600;
           transition: background-color 0.3s;
         }
         .button:hover {
-          background-color: #0056b3;
+          background-color: #2980b9;
         }
         .message {
-          color: #d9534f;
-          margin-top: 10px;
+          color: #e74c3c;
+          margin-top: 12px;
           text-align: center;
           font-size: 16px;
         }

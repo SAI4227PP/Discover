@@ -2,68 +2,118 @@
 
 /* Container for the entire filter section */
 .filter-section {
-    padding: 20px;
-    width: 250px; /* Adjust width as needed */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Heading styles within the filter section */
-  .filter-item h4, .filter-item h5 {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: bold; /* Added font weight for emphasis */
-  }
-  
-  /* Styles for each filter sub-item */
-  .filter-sub-item {
-    margin-bottom: 20px;
-  }
-  
-  /* Styles for filter labels */
-  .filter-sub-item label {
-    display: flex;
-    align-items: center; /* Center align items vertically */
-    font-size: 14px;
-  }
-  
-  /* Styles for checkboxes */
-  .filter-sub-item input[type="checkbox"] {
-    margin-right: 8px;
-  }
-  
-  /* Styles for range input (slider) */
-  .filter-sub-item input[type="range"] {
-    width: 100%; /* Full width of the filter sub-item */
-  }
-  
-  /* Container for time-based filters (departure times) */
-  .time-filter {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  /* Styles for time filter buttons */
-  .time-filter button {
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-  }
-  
-  /* Hover effect for time filter buttons */
-  .time-filter button:hover {
-    background-color: #e0e0e0;
-  }
-  
-  /* Styles for range labels (price range) */
-  .filter-sub-item span {
-    font-size: 12px;
-    color: #333; /* Darker color for better readability */
-  }
-  
+  padding: 20px;
+  width: 250px; /* Adjust width as needed */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Heading styles within the filter section */
+.filter-item h4, .filter-item h5 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold; /* Added font weight for emphasis */
+}
+
+/* Styles for each filter sub-item */
+.filter-sub-item {
+  margin-bottom: 20px;
+}
+
+/* Styles for filter labels */
+.filter-sub-item label {
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  font-size: 14px;
+}
+
+/* Styles for checkboxes */
+.filter-sub-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Styles for range input (slider) */
+.filter-sub-item input[type="range"] {
+  width: 100%; /* Full width of the filter sub-item */
+}
+
+/* Container for time-based filters (departure times) */
+.time-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Styles for time filter buttons */
+.time-filter button {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for time filter buttons */
+.time-filter button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Styles for range labels (price range) */
+.filter-sub-item span {
+  font-size: 12px;
+  color: #333; /* Darker color for better readability */
+}
+
+/* Departure time filter styles */
+.departure-time-filter {
+  margin-bottom: 20px;
+  width: 100%; /* Ensure it uses the full width of its parent */
+}
+
+.departure-time-filter h4 {
+  font-size: 16px;
+  font-weight: bold; /* Emphasis for the heading */
+  margin-bottom: 10px;
+  color: #444; /* Slightly darker color for better contrast */
+}
+
+/* Time slots list */
+.departure-time-filter .time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between time slots */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  list-style: none; /* Remove bullet points */
+}
+
+/* Individual time slot button */
+.departure-time-filter .time-slot {
+  flex: 1 1 60px; /* Default flex-basis for better control */
+  min-width: 50px; /* Minimum width for time slots */
+  max-width: 70px; /* Maximum width for time slots */
+  padding: 8px 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for time slot buttons */
+.departure-time-filter .time-slot:hover {
+  background-color: #e0e0e0;
+  border-color: #999; /* Darker border on hover */
+}
+
+/* Selected time slot button */
+.departure-time-filter .time-slot.selected {
+  background-color: #007bff; /* Highlight color for selected time slot */
+  color: #fff; /* White text color for contrast */
+  border-color: #007bff; /* Matching border color */
+}

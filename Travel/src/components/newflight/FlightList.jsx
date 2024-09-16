@@ -1,45 +1,62 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import '../newflight/FlightList.css';  // Make sure to adjust the path according to your project structure
-import FlightFilters from '../newflight/FlightFilters'; // Adjust the path based on your file structure
+import '../newflight/FlightList.css';  // Adjust path as needed
+import FlightFilters from '../newflight/FlightFilters'; // Adjust path as needed
 
 const FlightList = () => {
   const location = useLocation();
-  const { from, to, date } = location.state || {};
+  const { from = 'Unknown', to = 'Unknown', date = new Date().toLocaleDateString() } = location.state || {};
 
   const [selectedSort, setSelectedSort] = useState('Price: Low to High');
   const [selectedDate, setSelectedDate] = useState(date);
+  const [priceRange, setPriceRange] = useState([4999, 34033]);
+  const [selectedStops, setSelectedStops] = useState([]);
+  const [selectedAirlines, setSelectedAirlines] = useState([]);
+  const [selectedDepartureTime, setSelectedDepartureTime] = useState([]);
 
-  // Sample flight data (labels removed)
+  // Sample flight data
   const flights = [
+    
     {
       id: 1,
       airline: 'IndiGo',
-      flightNumber: '6E2155',
-      departureTime: '19:25',
-      arrivalTime: '21:55',
-      duration: '2h 30m',
+      flightNumber: '6E2150',
+      departureTime: '18:00',
+      arrivalTime: '20:25',
+      duration: '2h 25m',
       departureCity: from,
       arrivalCity: to,
-      price: '₹4,499',
-      discount: 'Extra ₹375 Off',
+      price: '₹4,999',
+      discount: 'Extra ₹285 Off',
       stopType: 'Non-stop',
     },
     {
       id: 2,
-      airline: 'Akasa Air',
-      flightNumber: 'QP1630',
-      departureTime: '20:45',
-      arrivalTime: '23:20',
-      duration: '2h 35m',
+      airline: 'Air India',
+      flightNumber: 'AI101',
+      departureTime: '07:15',
+      arrivalTime: '09:45',
+      duration: '2h 30m',
       departureCity: from,
       arrivalCity: to,
-      price: '₹4,500',
-      discount: 'Extra ₹262 Off',
-      stopType: '1 Stop',
+      price: '₹5,200',
+      discount: 'Extra ₹300 Off',
+      stopType: 'Non-stop',
     },
     {
       id: 3,
+      airline: 'SpiceJet',
+      flightNumber: 'SG332',
+      departureTime: '12:30',
+      arrivalTime: '15:00',
+      duration: '2h 30m',
+      departureCity: from,
+      arrivalCity: to,
+      price: '₹4,800',
+      discount: 'Extra ₹250 Off',
+      stopType: '1 Stop',
+    },{
+      id: 11,
       airline: 'IndiGo',
       flightNumber: '6E2150',
       departureTime: '18:00',
@@ -144,7 +161,41 @@ const FlightList = () => {
     }
   ];
 
-  // Sorting function
+  // Filtering and Sorting function
+  const filterAndSortFlights = (flights) => {
+    let filteredFlights = [...flights];
+
+    // Apply price filter
+    filteredFlights = filteredFlights.filter(flight => {
+      const price = parseInt(flight.price.replace('₹', '').replace(',', ''));
+      return price >= priceRange[0] && price <= priceRange[1];
+    });
+
+    // Apply stops filter
+    if (selectedStops.length > 0) {
+      filteredFlights = filteredFlights.filter(flight => selectedStops.includes(flight.stopType));
+    }
+
+    // Apply airline filter
+    if (selectedAirlines.length > 0) {
+      filteredFlights = filteredFlights.filter(flight => selectedAirlines.includes(flight.airline));
+    }
+
+    // Apply departure time filter
+    if (selectedDepartureTime.length > 0) {
+      filteredFlights = filteredFlights.filter(flight => {
+        const departureHour = parseInt(flight.departureTime.split(':')[0]);
+        return selectedDepartureTime.some(timeRange => {
+          const [start, end] = timeRange.split('-').map(time => parseInt(time.replace('AM', '').replace('PM', '')));
+          return departureHour >= start && departureHour < end;
+        });
+      });
+    }
+
+    // Apply sorting
+    return sortFlights(filteredFlights, selectedSort);
+  };
+
   const sortFlights = (flights, sortBy) => {
     switch (sortBy) {
       case 'Price: Low to High':
@@ -152,7 +203,11 @@ const FlightList = () => {
       case 'Price: High to Low':
         return [...flights].sort((a, b) => parseInt(b.price.replace('₹', '').replace(',', '')) - parseInt(a.price.replace('₹', '').replace(',', '')));
       case 'Fastest: Shortest First':
-        return [...flights].sort((a, b) => parseInt(a.duration.replace('h', '').replace('m', '').replace(' ', '')) - parseInt(b.duration.replace('h', '').replace('m', '').replace(' ', '')));
+        return [...flights].sort((a, b) => {
+          const durationA = parseInt(a.duration.replace('h', '').replace('m', '').replace(' ', ''));
+          const durationB = parseInt(b.duration.replace('h', '').replace('m', '').replace(' ', ''));
+          return durationA - durationB;
+        });
       case 'Departure: Earliest First':
         return [...flights].sort((a, b) => {
           const aTime = new Date(`1970-01-01T${a.departureTime}:00`);
@@ -166,9 +221,9 @@ const FlightList = () => {
     }
   };
 
-  const sortedFlights = sortFlights(flights, selectedSort);
+  const sortedFlights = filterAndSortFlights(flights);
 
-  // Sample dates for demonstration (replace with actual date logic if needed)
+  // Sample dates for demonstration
   const dates = [
     'Sun, 15 Sep - ₹5,000',
     'Mon, 16 Sep - ₹4,499',
@@ -181,19 +236,24 @@ const FlightList = () => {
 
   return (
     <div className="flight-list-container">
-      {/* Flight Filters */}
       <aside className="flight-filters">
-        <FlightFilters />
+        <FlightFilters
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          selectedStops={selectedStops}
+          setSelectedStops={setSelectedStops}
+          selectedAirlines={selectedAirlines}
+          setSelectedAirlines={setSelectedAirlines}
+          selectedDepartureTime={selectedDepartureTime}
+          setSelectedDepartureTime={setSelectedDepartureTime}
+        />
       </aside>
 
-      {/* Flight List */}
       <main className="flight-list">
-        {/* Display search criteria */}
         <div className="search-criteria">
           <h2>Flights from {from} to {to} on {selectedDate}</h2>
         </div>
 
-        {/* Date Navigation */}
         <div className="date-navigation">
           {dates.map((item) => {
             const [buttonDate, price] = item.split(' - ');
@@ -209,7 +269,6 @@ const FlightList = () => {
           })}
         </div>
 
-        {/* Sorting Options */}
         <div className="sort-options">
           {['Price: Low to High', 'Price: High to Low', 'Fastest: Shortest First', 'Departure: Earliest First', 'Smart: Recommended'].map(option => (
             <button
@@ -222,7 +281,6 @@ const FlightList = () => {
           ))}
         </div>
 
-        {/* Flight List */}
         <div className="flights">
           {sortedFlights.map((flight) => (
             <div key={flight.id} className="flight-item">
