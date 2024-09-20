@@ -1,0 +1,108 @@
+/* Global styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Headings */
+h1 {
+  color: #2E8B57; /* Similar to the green in the image */
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #0056b3; /* Blue color for subheadings */
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Paragraphs and Text */
+p {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #666;
+}
+
+ul {
+  margin-left: 20px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+ul li {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* FAQ Section */
+.faq {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.faq h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.faq p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Train Routes Section */
+.train-routes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.route-card {
+  width: 30%;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.route-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.route-card p {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #555;
+}

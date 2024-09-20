@@ -14,7 +14,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: String,
+    type: Number,
     required: true,
   },
   checkInDate: {
@@ -31,6 +31,6 @@ const bookingSchema = new mongoose.Schema({
   },
 });
 
-const Booking = mongoose.model('Booking', bookingSchema);
+const Booking = mongoose.model('/booking', bookingSchema);
 
 module.exports = Booking;

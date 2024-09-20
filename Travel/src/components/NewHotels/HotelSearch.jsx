@@ -113,30 +113,7 @@ const HotelSearch = () => {
       paymentMode: "Prepaid",
       meals: ["Breakfast Included", "Dinner Included"],
     },
-    {
-      id: 4,
-      name: "City Lights Hotel",
-      location: "Mumbai, Maharashtra",
-      distance: "5.0 km from City Center",
-      rating: 8.7,
-      reviews: 432,
-      price: 3500,
-      originalPrice: 4000,
-      discount: 500,
-      image: "https://images.unsplash.com/photo-1543515317-f419f4c01cf7",
-      features: ["City View", "Gym", "Free Wifi", "Restaurant"],
-      breakfastIncluded: false,
-      starRating: 4,
-      facilities: {
-        internetAccess: true,
-        parking: true,
-        roomService: true,
-        cctv: true,
-      },
-      accommodationType: "Hotel",
-      paymentMode: "Prepaid",
-      meals: ["Lunch Included"],
-    }
+    
   ];
 
   // Filter properties based on the current search state

@@ -1,0 +1,105 @@
+/* Loginpage.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f9fc;
+    font-family: Arial, sans-serif;
+}
+
+.login-container .image-section {
+    flex: 1; /* Take up half of the page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: 100%; /* Make the section fill the height */
+}
+
+.login-container .image-section img {
+    width: 120%; /* Increase width to 120% */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+    margin-left: -10%; /* Center the image properly */
+}
+
+.login-container .form-section {
+    flex: 1; /* Take up half of the page */
+    background-color: white;
+    padding: 2rem 3rem; /* More padding for the form section */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Limit the width of the form */
+    margin: 2rem; /* Add margin around the form section */
+}
+
+.login-container h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.login-container .form-group {
+    margin-bottom: 1.5rem; /* Space between form groups */
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold; /* Make labels bold */
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.75rem; /* Padding inside input fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+.login-container input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow on focus */
+}
+
+.login-container button {
+    width: 100%;
+    padding: 0.75rem; /* Padding inside button */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transition for hover and click effects */
+    margin-top: 1rem; /* Space above the button */
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.login-container button:active {
+    transform: translateY(0); /* Return to original position when clicked */
+}
+
+.login-container p {
+    text-align: center;
+    margin-top: 1.5rem; /* Space above the paragraph */
+    color: #777;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}

@@ -111,6 +111,7 @@ import Offer from './Offer.jpg'
 import building from './building.png'
 import train1 from './train.jpg'
 import bus_background from './bus_background.jpg'
+import authimage from './authimage.jpg'
 
 export const assets = {
     logo,
@@ -140,7 +141,8 @@ export const assets = {
     ticket,Offer,
     building,
     train1,
-    bus_background
+    bus_background,
+    authimage
 }
 
 export const products = [

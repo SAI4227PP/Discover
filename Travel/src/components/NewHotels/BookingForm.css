@@ -1,0 +1,93 @@
+.booking-form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .booking-form-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .booking-form-container h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .booking-summary {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  
+  .booking-summary h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .booking-summary p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .booking-form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .booking-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .booking-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .booking-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .submission-status {
+    margin-top: 15px;
+    color: #d9534f; /* Red color for error messages */
+    font-weight: bold;
+  }
+  
+  .submission-status.success {
+    color: #5bc0de; /* Light blue color for success messages */
+  }
+  

@@ -7,6 +7,9 @@ import NewsletterBox from '../components/NewsletterBox'
 import HotelsHero from '../components/HotelsHero'
 import BusForm from '../components/BusForm'
 import BusCard from '../components/BusCard'
+import BusDetails from '../components/BusDetails'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 
 
@@ -14,14 +17,17 @@ import BusCard from '../components/BusCard'
 const BUSES = () => {
   return (
     <div>
+      <Navbar/>
       <HotelsHero/>
     
       <BusForm/>
+      <BusDetails/>
       
       
       <BestSeller/>
       <OurPolicy/>
       <NewsletterBox/>
+      <Footer/>
     </div>
   )
 }

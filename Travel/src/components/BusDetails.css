@@ -1,0 +1,94 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bus-booking-container {
+    margin: 20px;
+  }
+  
+  .header-section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header-section h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .header-section p {
+    font-size: 16px;
+  }
+  
+  .benefits {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .benefit-item {
+    margin: 0 15px;
+    text-align: center;
+  }
+  
+  .benefit-item img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .srtc-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .srtc-logos img {
+    margin: 10px;
+    width: 80px;
+  }
+  
+  .abhi-assured-section {
+    background-color: #eef6f9;
+    padding: 30px 0;
+    text-align: center;
+  }
+  
+  .assurance-cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .assurance-card {
+    width: 20%;
+    text-align: center;
+  }
+  
+  .live-tracking-section,
+  .cancellation-policy-section,
+  .top-routes-section,
+  .popular-routes-section {
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
+  .footer-section {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  

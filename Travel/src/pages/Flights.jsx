@@ -7,19 +7,19 @@ import BestSeller from '../components/BestSeller'
 
 
 import FlightBookingForm from '../components/newflight/FlightForm'
-import HotelSearch from '../components/NewHotels/HotelSearch'
+import FlightList from '../components/newflight/FlightList'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 
 const Flights = () => {
   return (
     <div>
-      <HotelsHero/>
-     
+      <Navbar/>
       <FlightBookingForm/>
-      
-      
-      
+      <FlightList/>
       <BestSeller/>
+      <Footer/>
     </div>
   )
 }

@@ -24,76 +24,72 @@ const FlightBooking = () => {
   return (
     <div className="container">
       <div className="form-container">
-        <h2 className="heading">Book a Flight</h2>
         <form onSubmit={handleSubmit} className="form">
-          <div className="form-group">
-            <label htmlFor="from" className="label">From:</label>
-            <select
-              id="from"
-              value={from}
-              onChange={(e) => setFrom(e.target.value)}
-              className="select"
-              required
-            >
-              <option value="">Select Airport</option>
-              {/* Dummy airport options */}
-              <option value="DEL">Indira Gandhi International Airport (DEL), Delhi</option>
-              <option value="BOM">Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai</option>
-              <option value="BLR">Kempegowda International Airport (BLR), Bangalore</option>
-              <option value="MAA">Chennai International Airport (MAA), Chennai</option>
-              <option value="CCU">Netaji Subhas Chandra Bose International Airport (CCU), Kolkata</option>
-              <option value="HYD">Rajiv Gandhi International Airport (HYD), Hyderabad</option>
-              <option value="AMD">Sardar Vallabhbhai Patel International Airport (AMD), Ahmedabad</option>
-              <option value="PNQ">Pune Airport (PNQ), Pune</option>
-              <option value="COK">Cochin International Airport (COK), Kochi</option>
-              <option value="GOI">Goa International Airport (GOI), Goa</option>
-              <option value="JAI">Jaipur International Airport (JAI), Jaipur</option>
-              <option value="VNS">Lal Bahadur Shastri Airport (VNS), Varanasi</option>
-              <option value="IXC">Chandigarh International Airport (IXC), Chandigarh</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="to" className="label">To:</label>
-            <select
-              id="to"
-              value={to}
-              onChange={(e) => setTo(e.target.value)}
-              className="select"
-              required
-            >
-              <option value="">Select Airport</option>
-              {/* Dummy airport options */}
-              <option value="DEL">Indira Gandhi International Airport (DEL), Delhi</option>
-              <option value="BOM">Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai</option>
-              <option value="BLR">Kempegowda International Airport (BLR), Bangalore</option>
-              <option value="MAA">Chennai International Airport (MAA), Chennai</option>
-              <option value="CCU">Netaji Subhas Chandra Bose International Airport (CCU), Kolkata</option>
-              <option value="HYD">Rajiv Gandhi International Airport (HYD), Hyderabad</option>
-              <option value="AMD">Sardar Vallabhbhai Patel International Airport (AMD), Ahmedabad</option>
-              <option value="PNQ">Pune Airport (PNQ), Pune</option>
-              <option value="COK">Cochin International Airport (COK), Kochi</option>
-              <option value="GOI">Goa International Airport (GOI), Goa</option>
-              <option value="JAI">Jaipur International Airport (JAI), Jaipur</option>
-              <option value="VNS">Lal Bahadur Shastri Airport (VNS), Varanasi</option>
-              <option value="IXC">Chandigarh International Airport (IXC), Chandigarh</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="date" className="label">Date:</label>
-            <input
-              type="date"
-              id="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="input"
-              min={new Date().toISOString().split('T')[0]}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="button">
-              Search Flights
-            </button>
+          <div className="form-row">
+            <div className="form-group">
+              <select
+                id="from"
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+                className="select"
+                required
+              >
+                <option value="">From</option>
+                {/* Dummy airport options */}
+                <option value="DEL">Indira Gandhi International Airport (DEL), Delhi</option>
+                <option value="BOM">Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai</option>
+                <option value="BLR">Kempegowda International Airport (BLR), Bangalore</option>
+                <option value="MAA">Chennai International Airport (MAA), Chennai</option>
+                <option value="CCU">Netaji Subhas Chandra Bose International Airport (CCU), Kolkata</option>
+                <option value="HYD">Rajiv Gandhi International Airport (HYD), Hyderabad</option>
+                <option value="AMD">Sardar Vallabhbhai Patel International Airport (AMD), Ahmedabad</option>
+                <option value="PNQ">Pune Airport (PNQ), Pune</option>
+                <option value="COK">Cochin International Airport (COK), Kochi</option>
+                <option value="GOI">Goa International Airport (GOI), Goa</option>
+                <option value="JAI">Jaipur International Airport (JAI), Jaipur</option>
+                <option value="VNS">Lal Bahadur Shastri Airport (VNS), Varanasi</option>
+                <option value="IXC">Chandigarh International Airport (IXC), Chandigarh</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <select
+                id="to"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                className="select"
+                required
+              >
+                <option value="">To</option>
+                {/* Dummy airport options */}
+                <option value="DEL">Indira Gandhi International Airport (DEL), Delhi</option>
+                <option value="BOM">Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai</option>
+                <option value="BLR">Kempegowda International Airport (BLR), Bangalore</option>
+                <option value="MAA">Chennai International Airport (MAA), Chennai</option>
+                <option value="CCU">Netaji Subhas Chandra Bose International Airport (CCU), Kolkata</option>
+                <option value="HYD">Rajiv Gandhi International Airport (HYD), Hyderabad</option>
+                <option value="AMD">Sardar Vallabhbhai Patel International Airport (AMD), Ahmedabad</option>
+                <option value="PNQ">Pune Airport (PNQ), Pune</option>
+                <option value="COK">Cochin International Airport (COK), Kochi</option>
+                <option value="GOI">Goa International Airport (GOI), Goa</option>
+                <option value="JAI">Jaipur International Airport (JAI), Jaipur</option>
+                <option value="VNS">Lal Bahadur Shastri Airport (VNS), Varanasi</option>
+                <option value="IXC">Chandigarh International Airport (IXC), Chandigarh</option>
+              </select>
+            </div>
+            <div className="form-group date-search-container">
+              <input
+                type="date"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="input"
+                min={new Date().toISOString().split('T')[0]}
+                required
+              />
+              <button type="submit" className="button">
+                Search
+              </button>
+            </div>
           </div>
           {message && <p className="message" aria-live="polite">{message}</p>}
         </form>
@@ -105,39 +101,38 @@ const FlightBooking = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          min-height: 100vh;
+          min-height: 45%;
           background-color: #f5f6f7;
-          padding: 0 20px;
+          padding: 10px;
           font-family: 'Roboto', sans-serif;
         }
         .form-container {
           background-color: #ffffff;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-          width: 100%;
-          max-width: 500px;
-        }
-        .heading {
-          margin-bottom: 24px;
-          font-size: 32px;
-          font-weight: 700;
-          color: #2c3e50;
-          text-align: center;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: white;
+          width: 95%;
+          max-width: 95%; /* Ensure the form container doesn’t get too wide */
+          box-sizing: border-box; /* Include padding and border in the element's total width and height */
         }
         .form {
           display: flex;
           flex-direction: column;
         }
-        .form-group {
-          margin-bottom: 24px;
+        .form-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-bottom: 15px;
+          
         }
-        .label {
-          display: block;
-          margin-bottom: 8px;
-          font-size: 16px;
-          font-weight: 500;
-          color: #34495e;
+        .form-group {
+          flex: 1;
+          min-width: 200px;
+        }
+        .date-search-container {
+          display: flex;
+          gap: 8px;
         }
         .select,
         .input {
@@ -158,6 +153,8 @@ const FlightBooking = () => {
           font-size: 16px;
           font-weight: 600;
           transition: background-color 0.3s;
+          width: auto; /* Ensure the button's width fits its content */
+          align-self: center; /* Align the button vertically with the input */
         }
         .button:hover {
           background-color: #2980b9;
